@@ -24,7 +24,7 @@ body{
 				<h5><input type="submit" value="Interview"></h5>
 			</form>
         </div>
-		<a href="pages/MACHome.jsp">Homepage</a>
+		 <a href="machome.obj">MAC Homepage</a>
 		 <br>
   <br>
 <br>

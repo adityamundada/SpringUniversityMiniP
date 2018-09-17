@@ -9,10 +9,8 @@
 
 body{
 	background-color: #323030;
+	color: white;
 }
-
-
-
 
 ul {
     list-style-type: none;
@@ -33,7 +31,6 @@ li {
 
 li a, .dropbtn {
     display: inline-block;
-
     color: black;
     text-align: center;
     padding: 14px 16px;
@@ -57,7 +54,12 @@ li.dropdown {
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
-
+.header img {
+  float: left;
+  width: 60px;
+  height: 60px;
+  background: #555;
+}
 .dropdown-content a {
     color: black;
     padding: 12px 16px;
@@ -79,20 +81,17 @@ li.dropdown {
 </style>
 </head>
 <body>
-
-<%-- <%
-session = request.getSession(false);
-String check = (String)session.getAttribute("check");
-if(check==null)
-	response.sendRedirect("error.jsp");
-%> --%>
- <%@ include file = "Header.jsp" %>
- <br>
+<div class="header">
+<img src="images/logo.png" alt="logo">
+<h1>University Admission Portal </h1>
+</div>
+<br>
 
 <div>
   <nav>
     
         <ul>
+         <li><a href="index.obj">Home</a></li>
             <li><a href="default.asp">Logout</a></li>
             <!-- <li><a href="news.asp">view Program</a></li> -->
             <li><a href="viewApplicantsByScheduleId.obj">View Applicants</a></li>
