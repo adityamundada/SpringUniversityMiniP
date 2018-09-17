@@ -39,9 +39,9 @@ ul li {
 ul li:last-child{
     padding-right: 10px;
 }
-a:link, a:visited {
-    background-color: #f44336;
-    color: white;
+#home{
+	background-color: grey;
+    color: black;
     padding: 14px 25px;
     text-align: center;
     text-decoration: none;
@@ -49,17 +49,22 @@ a:link, a:visited {
    
 }
 
-
-a:hover, a:active {
-    background-color: blue;
+a{
+	
+	color:white;
 }
+a:hover, a:active {
+    background-color: green;
+    color:white;
+} 
 </style>
 </head>
 <body>
 <div class="header">
 <img src="images/logo.png" alt="logo">
-<h1>University Admission Portal </h1><ul>
-        <li> <a href="index.obj"> Home</a> 
+<h1>University Admission Portal </h1>
+<ul>
+        <li id="home"> <a href="index.obj"> Home</a></li> 
        
      </ul>
 
