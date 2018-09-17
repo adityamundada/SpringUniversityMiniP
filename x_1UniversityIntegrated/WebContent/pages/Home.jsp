@@ -12,6 +12,9 @@ body {
    background-color: #323030;
     font-family: Verdana, sans-serif; margin:0;
     color: white;
+    background-image: url("images/home1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
    
 }
 * {box-sizing: border-box}
@@ -138,7 +141,7 @@ img {vertical-align: middle;}
 
 <div class="mySlides fade">
   <div class="numbertext">1 / 3</div>
-  <img src="images/s1.png" style="width:100%">
+  <img src="images/College.jpg" style="width:100%">
   <div class="text">Front</div>
 </div>
 
@@ -167,20 +170,24 @@ img {vertical-align: middle;}
 </div>
 <script>
 var slideIndex = 1;
+var timer=null;
 showSlides(slideIndex);
 
 function plusSlides(n) {
+	 clearTimeout(timer);
   showSlides(slideIndex += n);
 }
 
-function currentSlide(n) {
+ function currentSlide(n) {
+	 clearTimeout(timer);
   showSlides(slideIndex = n);
-}
+} 
 
 function showSlides(n) {
   var i;
   var slides = document.getElementsByClassName("mySlides");
   var dots = document.getElementsByClassName("dot");
+  if (n==undefined){n = ++slideIndex}
   if (n > slides.length) {slideIndex = 1}    
   if (n < 1) {slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
@@ -191,6 +198,7 @@ function showSlides(n) {
   }
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active";
+  timer = setTimeout(showSlides, 2000);
 }
 </script>
  <center>

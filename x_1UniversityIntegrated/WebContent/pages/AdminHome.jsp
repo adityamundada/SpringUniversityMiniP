@@ -9,8 +9,14 @@
 
 body{
 	background-color: #323030;
+	color: white;
 }
-
+.header img {
+  float: left;
+  width: 60px;
+  height: 60px;
+  background: #555;
+}
 
 
 
@@ -79,13 +85,16 @@ li.dropdown {
 </style>
 </head>
 <body>
- <%@ include file = "Header.jsp" %>
- <br>
-
+ <div class="header">
+<img src="images/logo.png" alt="logo">
+<h1>University Admission Portal </h1>
+</div>
+<br>
 <div>
   <nav>
     
         <ul>
+         <li><a href="index.obj">Home</a></li>
             <li><a href="default.asp">Logout</a></li>
             <!-- <li><a href="news.asp">view Program</a></li> -->
             <li><a href="#">View Applicants</a></li>
