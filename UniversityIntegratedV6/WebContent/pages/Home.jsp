@@ -12,6 +12,9 @@ body {
    background-color: #323030;
     font-family: Verdana, sans-serif; margin:0;
     color: white;
+    background-image: url("images/home1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
    
 }
 * {box-sizing: border-box}
