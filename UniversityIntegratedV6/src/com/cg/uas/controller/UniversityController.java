@@ -25,6 +25,7 @@ import com.cg.uas.exception.UniversityException;
 import com.cg.uas.service.IAdminService;
 import com.cg.uas.service.IApplicantService;
 import com.cg.uas.service.IMACService;
+import com.sun.javafx.sg.prism.NGShape.Mode;
 
 
 @Controller
@@ -76,25 +77,29 @@ public class UniversityController {
 		return mnv;
 	}
 	@RequestMapping("/checkLogin")
-	public ModelAndView checkLogin(@ModelAttribute("login") @Valid LoginBean l,BindingResult result,Model model,HttpSession session)  throws UniversityException   
+	public ModelAndView checkLogin(@ModelAttribute("login") @Valid LoginBean l,BindingResult result,Model model)  throws UniversityException   
 	{
 		String role=service.checkuser(l);
-		System.out.println("check 1.1");
-		System.out.println("------------------------------------role is " + role);
+
 		if(role==null)
 		{
+		
 			return new ModelAndView("error","message","USER NOT FOUND");
 		}
 		else 
 		{
 			if("admin".equals(role))
 			{
-				session.setAttribute("user","admin");
+
+				
+		
 				return new ModelAndView("AdminHome","user","admin");
+				
+				
 			}
 				else if("mac".equals(role))
 				{
-					session.setAttribute("user","mac");		
+		
 					return new ModelAndView("MACHome","user","mac");
 				}
 				else
@@ -424,7 +429,7 @@ return model;
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	/*
-	 * gangotry code
+	 * gangotry's code
 	 * 
 	 * 
 	 * 
@@ -824,11 +829,11 @@ return model;
 		}
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////		
 
-	@RequestMapping(value="/viewApplicantsById")
-	public ModelAndView fetchApplicantById(){
+	@RequestMapping(value="/viewApplicantsByScheduleId")
+	public ModelAndView fetchApplicantById() throws UniversityException{
 		ModelAndView modelAndView= new ModelAndView();
 		List<ProgramScheduledBean> programScheduledList;
-		try {
+		
 			programScheduledList = adminService.viewProgramsScheduled();//           viewAllScheduledPrograms();
 			if(programScheduledList.size() < 1) {
 				modelAndView.setViewName("error");
@@ -838,15 +843,38 @@ return model;
 				modelAndView.setViewName("beforeApplicantSchedule");
 				modelAndView.addObject("programScheduledList", programScheduledList );
 			}
-		} 
-		catch (UniversityException e) {
+		
+		/*catch (UniversityException e) {
 			modelAndView.setViewName("error");
 			modelAndView.addObject("message", e.getMessage());
 		}
-		
+		*/
 		
 		return modelAndView;
 	}
+	
+	
+	@RequestMapping(value="/searchApplicants")
+	public ModelAndView displayApplicants(@RequestParam("scheduledProgramID") String scheduledProgramID) throws UniversityException{
+		ModelAndView mnv= new ModelAndView();
+		
+		List<ApplicationBean> applicantList;
+		
+			applicantList = macservice.viewApplicant(scheduledProgramID);
+			if(applicantList.size() < 1) {
+				mnv.setViewName("error");
+				mnv.addObject("message", "NO APPLICANT RECORD FOUND");
+			}
+			else {
+				mnv.setViewName("viewApplicantsByScheduleId");
+				mnv.addObject("applicantList", applicantList);
+			}
+		
+			
+		return mnv;
+		
+	}
+	
 	
 	
 	

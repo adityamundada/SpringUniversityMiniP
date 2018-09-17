@@ -25,9 +25,7 @@ public interface IAdminService {
 	public List<ProgramScheduledBean> viewSchedule(Date startDate, Date endDate) throws UniversityException;
 
 	public ProgramScheduledBean deleteSchedule(String scheduledProgramID) throws UniversityException;
-
 	
-	//displays teh list of programs scheduled
 	public List<ProgramScheduledBean> viewProgramsScheduled() throws UniversityException;
 
 	

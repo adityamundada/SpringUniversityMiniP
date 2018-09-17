@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-         <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -14,9 +12,6 @@ body {
    background-color: #323030;
     font-family: Verdana, sans-serif; margin:0;
     color: white;
-    background-image: url("images/home1.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
    
 }
 * {box-sizing: border-box}
@@ -138,16 +133,12 @@ img {vertical-align: middle;}
 <body  >
  
  <%@ include file = "Header.jsp" %>
-<%-- <c:if test="${session ne null}">
-<%
-	session.invalidate();
-%>
-</c:if>
- --%><div class="slideshow-container">
+ 
+<div class="slideshow-container">
 
 <div class="mySlides fade">
   <div class="numbertext">1 / 3</div>
-  <img src="images/College.jpg" style="width:100%">
+  <img src="images/s1.png" style="width:100%">
   <div class="text">Front</div>
 </div>
 
@@ -176,24 +167,20 @@ img {vertical-align: middle;}
 </div>
 <script>
 var slideIndex = 1;
-var timer=null;
 showSlides(slideIndex);
 
 function plusSlides(n) {
-	 clearTimeout(timer);
   showSlides(slideIndex += n);
 }
 
- function currentSlide(n) {
-	 clearTimeout(timer);
+function currentSlide(n) {
   showSlides(slideIndex = n);
-} 
+}
 
 function showSlides(n) {
   var i;
   var slides = document.getElementsByClassName("mySlides");
   var dots = document.getElementsByClassName("dot");
-  if (n==undefined){n = ++slideIndex}
   if (n > slides.length) {slideIndex = 1}    
   if (n < 1) {slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
@@ -204,7 +191,6 @@ function showSlides(n) {
   }
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active";
-  timer = setTimeout(showSlides, 2000);
 }
 </script>
  <center>

@@ -9,14 +9,8 @@
 
 body{
 	background-color: #323030;
-	color: white;
 }
-.header img {
-  float: left;
-  width: 60px;
-  height: 60px;
-  background: #555;
-}
+
 
 
 
@@ -84,30 +78,17 @@ li.dropdown {
 
 </style>
 </head>
-
-<%-- <%
-session = request.getSession(false);
-String check = (String)session.getAttribute("check");
-if(check==null)
-	response.sendRedirect("error.jsp");
-%>
- --%>
-
 <body>
- <div class="header">
-<img src="images/logo.png" alt="logo">
-<h1>University Admission Portal </h1>
-</div>
-<br>
+ <%@ include file = "Header.jsp" %>
+ <br>
 
 <div>
   <nav>
     
         <ul>
-         <li><a href="index.obj">Home</a></li>
             <li><a href="default.asp">Logout</a></li>
             <!-- <li><a href="news.asp">view Program</a></li> -->
-            <li><a href="#">View Applicants</a></li>
+            <li><a href="viewApplicantsByScheduleId.obj">View Applicants</a></li>
             <li class="dropdown">
               <a href="javascript:void(0)" class="dropbtn">Programs Scheduled</a>
               <div class="dropdown-content">

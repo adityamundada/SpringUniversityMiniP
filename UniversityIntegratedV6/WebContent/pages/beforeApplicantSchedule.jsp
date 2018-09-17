@@ -36,7 +36,7 @@ body{
 						<td>${scheduleList.scheduledProgramID}</td>
 						<td>${scheduleList.programName}</td>
 						<td>
-							<a href="searchConfirmedApplicants.obj?scheduledProgramID=${scheduleList.scheduledProgramID}">View confirmed applicants</a>
+							<a href="searchApplicants.obj?scheduledProgramID=${scheduleList.scheduledProgramID}">View Applicants</a>
 						</td>
 					</tr>
 				</c:forEach>
