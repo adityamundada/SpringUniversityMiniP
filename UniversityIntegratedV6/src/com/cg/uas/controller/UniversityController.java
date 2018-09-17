@@ -657,10 +657,15 @@ return model;
 	@RequestMapping("/accept.obj")
 	public ModelAndView showInterviewForm(@RequestParam("appId") Integer appId) {
 		ModelAndView model = new ModelAndView();	
-		
-		model.setViewName("interviewDate");
-		model.addObject("applicant", appId);
-		
+		try {
+			macservice.accept(appId);
+			model.setViewName("interviewDate");
+			model.addObject("applicant", appId);
+		} 
+		catch (UniversityException e) {
+			model.setViewName("error");
+			model.addObject("message", e.getMessage());
+		}
 		return model;
 	}
 	
@@ -668,9 +673,10 @@ return model;
 	// Shows the date of interview for applicant
 	
 	@RequestMapping("/interview.obj")
-	public ModelAndView interviewDate(@RequestParam("appId") Integer appId, @RequestParam("dateOfInterview") Date date) {
+	public ModelAndView interviewDate(@RequestParam("appId") Integer appId, @RequestParam("dateOfInterview") String date) {
 		ModelAndView model = new ModelAndView();
 		try {
+			System.out.println("in /interview.obj ---->" + date);
 			macservice.interview(appId, date);
 			model.setViewName("MACHome");
 		} 
@@ -825,7 +831,7 @@ return model;
 			List<ParticipantBean> confirmedList;
 			try {
 				confirmedList = macservice.viewConfirmedApplicants(programId);
-				if(confirmedList.size() < 1) {
+				if(confirmedList.size() < 1 || confirmedList == null) {
 					model.setViewName("error");
 					model.addObject("message", "NO RECORD FOUND");
 				}

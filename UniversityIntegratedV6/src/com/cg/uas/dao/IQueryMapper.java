@@ -34,12 +34,12 @@ public interface IQueryMapper {
 	
 	public static final String RETRIEVE_PROGRAMS_BY_ID = "SELECT psb FROM ProgramScheduledBean psb";
 	public static final String RETRIEVE_APPLICANTS = "SELECT ab from ApplicationBean ab WHERE ab.scheduledProgramID = ?1";
-	public static final String SET_STATUS_ACCEPT = "UPDATE ApplicationBean SET status = 'Accepted' WHERE applicationId = ?1";
+	public static final String SET_STATUS_ACCEPT = "UPDATE ApplicationBean SET status = 'ACCEPTED' WHERE applicationId = ?1";
 	public static final String RETRIEVE_APPLICANTS_STATUS_ACCEPTED = "SELECT ab from ApplicationBean ab where ab.scheduledProgramID = ?1 AND ab.status='ACCEPTED'";
 	public static final String SET_INTERVIEW_DATE = "UPDATE ApplicationBean SET dateOfInterview = ?1 WHERE applicationId = ?2";
-	public static final String SET_STATUS_CONFIRMED = "UPDATE  ApplicationBean SET status = 'Confirmed' WHERE applicationId = ?1";
-	public static final String SET_STATUS_REJECT = "UPDATE ApplicationBean SET status = 'Rejected' WHERE applicationId = ?1";
-	public static final String RETRIEVE_APPLICANTS_STATUS_CONFIRMED = "SELECT ab from ApplicationBean ab where ab.scheduledProgramID = ?1 AND ab.status='CONFIRMED";
+	public static final String SET_STATUS_CONFIRMED = "UPDATE  ApplicationBean SET status = 'CONFIRMED' WHERE applicationId = ?1";
+	public static final String SET_STATUS_REJECT = "UPDATE ApplicationBean SET status = 'REJECTED' WHERE applicationId = ?1";
+	public static final String RETRIEVE_APPLICANTS_STATUS_CONFIRMED = "SELECT ab from ApplicationBean ab where ab.scheduledProgramID = ?1 AND ab.status='CONFIRMED'";
 	public static final String RETRIEVE_CONFIRMED_PARTICIPANT = "SELECT pb from ParticipantBean pb";
 	
 	

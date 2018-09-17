@@ -1,5 +1,7 @@
 package com.cg.uas.dao;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -52,9 +54,20 @@ public class MACDaoImpl implements IMACDao {
 	}
 
 	@Override
-	public ApplicationBean interview(Integer applicationId, Date date) throws UniversityException {
+	public ApplicationBean interview(Integer applicationId, String dateInString) throws UniversityException {
+		
+		SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
+		Date date = null;
+		try {
+			date = sdf1.parse(dateInString);
+		} 
+		catch (ParseException e) {
+			System.err.println(e.getMessage());
+		}
+		java.sql.Date sqlDate = new java.sql.Date(date.getTime()); 
+		
 		Query query = entityManager.createQuery(IQueryMapper.SET_INTERVIEW_DATE);
-		query.setParameter(1, date);
+		query.setParameter(1, sqlDate);
 		query.setParameter(2, applicationId);
 		query.executeUpdate();
 		return null;
@@ -78,25 +91,30 @@ public class MACDaoImpl implements IMACDao {
 
 	@Override
 	public List<ParticipantBean> viewConfirmedApplicants(String scheduledProgramId) {
-		List<ApplicationBean> applicationList;
-		List<ParticipantBean> participantList;
+		List<ApplicationBean> applicationList = null;
+		List<ParticipantBean> participantList = null;
 
 		TypedQuery<ApplicationBean> tQuery = entityManager.createQuery(IQueryMapper.RETRIEVE_APPLICANTS_STATUS_CONFIRMED, ApplicationBean.class);
 		tQuery.setParameter(1, scheduledProgramId);
 		
 		applicationList = tQuery.getResultList();
 		
-		for(ApplicationBean appBean : applicationList) {
-			Query query = entityManager.createNativeQuery("INSERT INTO Participant(roll_no, email_id, application_id, scheduled_program_id) " + "VALUES(rollno_seq.NEXTVAL, ?, ?, ?)", ParticipantBean.class);
-			query.setParameter(1, appBean.getEmailID());
-			query.setParameter(2, appBean.getApplicationId());
-			query.setParameter(3, appBean.getScheduledProgramID());
-			query.executeUpdate();
-		}
+		if(applicationList != null) {
+			for(ApplicationBean appBean : applicationList) {
+				Query query = entityManager.createNativeQuery("INSERT INTO Participant(roll_no, email_id, application_id, scheduled_program_id) " + "VALUES(rollnumber_seq.NEXTVAL, ?, ?, ?)", ParticipantBean.class);
+				query.setParameter(1, appBean.getEmailID());
+				query.setParameter(2, appBean.getApplicationId());
+				query.setParameter(3, appBean.getScheduledProgramID());
+				query.executeUpdate();
+			}
 		
-		TypedQuery<ParticipantBean> tQuery2 = entityManager.createQuery(IQueryMapper.RETRIEVE_CONFIRMED_PARTICIPANT, ParticipantBean.class);
-		tQuery.setParameter(1, scheduledProgramId);
-		participantList = tQuery2.getResultList();
-		return participantList;
+			TypedQuery<ParticipantBean> tQuery2 = entityManager.createQuery(IQueryMapper.RETRIEVE_CONFIRMED_PARTICIPANT, ParticipantBean.class);
+			tQuery.setParameter(1, scheduledProgramId);
+			participantList = tQuery2.getResultList();
+			return participantList;
+		}
+		else {
+			return null;
+		}
 	}
 }

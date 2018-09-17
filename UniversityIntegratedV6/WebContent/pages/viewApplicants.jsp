@@ -44,10 +44,10 @@ body{
 						<td>${applicantList.emailID}</td>
 						<td>${applicantList.goals}</td>
 						<td>${applicantList.status}</td>
-						<c:set var="status" value="Applied"/>
-						<c:set var="status1" value="Confirmed"/>
-						<c:set var="status2" value="Rejected"/>
-						<c:set var="status3" value="Accepted"/>
+						<c:set var="status" value="APPLIED"/>
+						<c:set var="status1" value="CONFIRMED"/>
+						<c:set var="status2" value="REJECTED"/>
+						<c:set var="status3" value="ACCEPTED"/>
 			 		
 			 		
 			 		<!------------------------  FOR ACCEPT COLUMN (third last td) --------------------->
@@ -72,9 +72,17 @@ body{
 								<a href="reject.obj?appId=${applicantList.applicationId}">Reject</a>
 							</td>
 						</c:if>
+						<c:if test="${ applicantList.status eq status1}">
+			  				<!-- <td>NA</td> -->
+			  				<td>NA</td>
+			  			</c:if> 
 						<c:if test="${ applicantList.status eq status2}">
 			  				<!-- <td>NA</td> -->
 			  				<td>${applicantList.status}</td>
+			  			</c:if> 
+						<c:if test="${ applicantList.status eq status3}">
+			  				<!-- <td>NA</td> -->
+			  				<td>NA</td>
 			  			</c:if> 
 			  			
 			  			

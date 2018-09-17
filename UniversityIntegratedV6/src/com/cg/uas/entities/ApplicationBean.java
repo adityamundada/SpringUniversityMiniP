@@ -81,6 +81,7 @@ public class ApplicationBean {
 	@Column(name="Date_Of_Interview")
 	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private Date dateOfInterview;
+	
 	public int getApplicationId() {
 		return applicationId;
 	}

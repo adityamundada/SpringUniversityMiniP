@@ -20,7 +20,7 @@ body{
 			<form action="interview.obj" method="post">
 				<h2>Confirm Interview </h2>
 				Application ID: <input type="text" name="appId" value="${applicant}">    
-				Interview date: <input type="date" name="dateOfInterview">    
+				Interview date: <input type="string" name="dateOfInterview">    
 				<h5><input type="submit" value="Interview"></h5>
 			</form>
         </div>
