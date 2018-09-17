@@ -17,7 +17,7 @@ public class MACServiceImpl implements IMACService {
 
 	@Autowired
 	IMACDao MACdao;
-	
+	int x=10;
 	@Override
 	public List<ProgramScheduledBean> viewAllScheduledPrograms() throws UniversityException {
 		return MACdao.viewAllScheduledPrograms();
