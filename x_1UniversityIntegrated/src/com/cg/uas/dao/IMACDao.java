@@ -30,6 +30,9 @@ public interface IMACDao {
 
 	/* Updates applicant's status as REJECTED (oops), given his/her application ID */
 	public ApplicationBean reject(Integer applicationId) throws UniversityException;
-
+	
+	// View all the applicants who have been confirmed
 	public List<ParticipantBean> viewConfirmedApplicants(String scheduledProgramId);
+	
+	
 }
