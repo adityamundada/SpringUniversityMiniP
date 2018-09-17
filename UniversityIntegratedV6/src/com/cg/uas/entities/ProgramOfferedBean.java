@@ -4,9 +4,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
+import org.springframework.format.annotation.NumberFormat;
 
 @Entity
 @Table(name="programs_offered")
@@ -20,19 +23,23 @@ public class ProgramOfferedBean {
 	private String programName;
 	
 	@NotEmpty(message="Field cannot be empty")
-	
+	@Pattern(regexp="[A-Za-z0-9\\s]{2,20}", message="Please enter a valid description")
 	@Column(name="DESCRIPTION")
 	private String description;
 	
-	@Column(name="APPLICANT_ELIGIBILITY")	
-	@NotEmpty(message="Field cannot be empty")
+	@Column(name = "APPLICANT_ELIGIBILITY")	
+	@Pattern(regexp = "[A-Za-z\\s]{2,40}", message="Please enter a valid applicant eligibility")
+	@NotEmpty(message = "Field cannot be empty")
 	private String applicantEligibility;
 	
 	@Column(name="DURATION")
-	@NotEmpty(message="Field cannot be empty")
-	private String duration;
+	@NumberFormat(pattern = "[1-9]")
+	@NotNull(message = "Field cannot be empty!!")
+	@Range(min = 1, max = 24, message = "Duration should be 1-24 months")
+	private Integer duration;
 	
 	@Column(name="DEGREE_CERTIFICATE_OFFERED")
+	@Pattern(regexp = "[A-Za-z\\s]{2,10}", message="Please enter a valid degree certificate offered")
 	@NotEmpty(message="Field cannot be empty")
 	private String degreeCertificateOffered;
 	
@@ -57,10 +64,10 @@ public class ProgramOfferedBean {
 	public void setApplicantEligibility(String applicantEligibility) {
 		this.applicantEligibility = applicantEligibility;
 	}
-	public String getDuration() {
+	public Integer getDuration() {
 		return duration;
 	}
-	public void setDuration(String duration) {
+	public void setDuration(Integer duration) {
 		this.duration = duration;
 	}
 	public String getDegreeCertificateOffered() {

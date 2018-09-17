@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.jms.Session;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -25,7 +26,6 @@ import com.cg.uas.exception.UniversityException;
 import com.cg.uas.service.IAdminService;
 import com.cg.uas.service.IApplicantService;
 import com.cg.uas.service.IMACService;
-import com.sun.javafx.sg.prism.NGShape.Mode;
 
 
 @Controller
@@ -77,7 +77,7 @@ public class UniversityController {
 		return mnv;
 	}
 	@RequestMapping("/checkLogin")
-	public ModelAndView checkLogin(@ModelAttribute("login") @Valid LoginBean l,BindingResult result,Model model)  throws UniversityException   
+	public ModelAndView checkLogin(@ModelAttribute("login") @Valid LoginBean l,BindingResult result,Model model,HttpSession session)  throws UniversityException   
 	{
 		String role=service.checkuser(l);
 
@@ -90,16 +90,14 @@ public class UniversityController {
 		{
 			if("admin".equals(role))
 			{
-
-				
-		
+//				session.setAttribute("user", "admin");
 				return new ModelAndView("AdminHome","user","admin");
 				
 				
 			}
 				else if("mac".equals(role))
 				{
-		
+//					session.setAttribute("user", "mac");
 					return new ModelAndView("MACHome","user","mac");
 				}
 				else
@@ -275,10 +273,17 @@ return model;
 			modelAndView.addObject("programOfferedBean", programOfferedBean);
 			modelAndView.setViewName("addProgramsOffered");
 		}else{
-			String programName = adminService.addProgramOffered(programOfferedBean).getProgramName();
-			modelAndView.addObject("programName",programName);
-			modelAndView.addObject("programOfferedBean", new ProgramOfferedBean());
-			modelAndView.setViewName("addProgramsOffered");
+			ProgramOfferedBean offeredBean = adminService.findoffered(programOfferedBean.getProgramName());
+			if(offeredBean == null){
+				String programName = adminService.addProgramOffered(programOfferedBean).getProgramName();
+				modelAndView.addObject("programName",programName);
+				modelAndView.addObject("programOfferedBean", new ProgramOfferedBean());
+				modelAndView.setViewName("addProgramsOffered");
+			}else{
+				modelAndView.addObject("errorMessage", "program Name Already exists!!");
+				modelAndView.addObject("programOfferedBean", programOfferedBean);
+				modelAndView.setViewName("addProgramsOffered");
+			}
 			
 		}
 		

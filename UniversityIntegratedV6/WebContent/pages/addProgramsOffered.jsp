@@ -46,7 +46,7 @@ body{
 </tr>
 <tr>
 	<td>Enter Duration:(In months)</td>
-  	<td><form:input path="duration"/>
+  	<td><form:input path="duration" pattern = "^([0]?[1-9])|([1][0-9])|([2][0-4])$" title = "Enter a number between 1-24" />
     	<form:errors path="duration" style="color:red" />
 	</td>
 </tr>
@@ -66,6 +66,12 @@ body{
  <c:if test="${programName ne null}">
 			<div>
 			Program ${programName} is addded successfully.
+			</div>
+</c:if>
+
+ <c:if test="${errorMessage ne null}">
+			<div>
+			<p style="color:red">${errorMessage}</p>
 			</div>
 </c:if>
 

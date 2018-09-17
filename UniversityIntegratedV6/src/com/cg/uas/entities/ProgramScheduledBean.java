@@ -12,8 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -28,34 +26,35 @@ public class ProgramScheduledBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	//@NotEmpty(message="Field cannot be empty")
+	@NotEmpty(message="Field cannot be empty")
 	@Pattern(regexp="[A-Za-z0-9]{1,5}",message="Please enter a valid id")
 	@Column(name = "Scheduled_program_id")
 	private String scheduledProgramID;
 	
-	//@NotEmpty(message="Field cannot be empty")
+	@NotEmpty(message="Field cannot be empty")
 	@Column(name = "ProgramName")
 	private String programName;
 	
-	//@NotEmpty(message="Field cannot be empty")
+	@NotEmpty(message="Field cannot be empty")
 	@Column(name = "Location")
 	private String location;
 	
 	@Column(name = "start_date")
-	
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
+	@NotNull(message = "Field cannot be empty")
 	private Date startDate;
 	
 	@Column(name = "end_date")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
+	@NotNull(message = "Field cannot be empty")
 	private Date endDate;
 
-	//@NotNull(message="Field cannot be empty")
+	@NotNull(message="Field cannot be empty")
 	@Column(name = "sessions_per_week")
-	@Min(value=1,message="min 1")
-	@Max(value=6,message="max 6")
+	/*@Min(value=1,message="min 1")
+	@Max(value=6,message="max 6")*/
 	private Integer sessionsPerWeek;
 	
 	public String getScheduledProgramID() {

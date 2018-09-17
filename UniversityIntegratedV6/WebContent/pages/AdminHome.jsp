@@ -79,6 +79,13 @@ li.dropdown {
 </style>
 </head>
 <body>
+
+<%-- <%
+session = request.getSession(false);
+String check = (String)session.getAttribute("check");
+if(check==null)
+	response.sendRedirect("error.jsp");
+%> --%>
  <%@ include file = "Header.jsp" %>
  <br>
 
