@@ -84,12 +84,22 @@ li.dropdown {
 
 </style>
 </head>
+
+<%-- <%
+session = request.getSession(false);
+String check = (String)session.getAttribute("check");
+if(check==null)
+	response.sendRedirect("error.jsp");
+%>
+ --%>
+
 <body>
  <div class="header">
 <img src="images/logo.png" alt="logo">
 <h1>University Admission Portal </h1>
 </div>
 <br>
+
 <div>
   <nav>
     

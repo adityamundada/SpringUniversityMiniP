@@ -76,29 +76,25 @@ public class UniversityController {
 		return mnv;
 	}
 	@RequestMapping("/checkLogin")
-	public ModelAndView checkLogin(@ModelAttribute("login") @Valid LoginBean l,BindingResult result,Model model)  throws UniversityException   
+	public ModelAndView checkLogin(@ModelAttribute("login") @Valid LoginBean l,BindingResult result,Model model,HttpSession session)  throws UniversityException   
 	{
 		String role=service.checkuser(l);
-
+		System.out.println("check 1.1");
+		System.out.println("------------------------------------role is " + role);
 		if(role==null)
 		{
-		
 			return new ModelAndView("error","message","USER NOT FOUND");
 		}
 		else 
 		{
 			if("admin".equals(role))
 			{
-
-				
-		
+				session.setAttribute("user","admin");
 				return new ModelAndView("AdminHome","user","admin");
-				
-				
 			}
 				else if("mac".equals(role))
 				{
-		
+					session.setAttribute("user","mac");		
 					return new ModelAndView("MACHome","user","mac");
 				}
 				else

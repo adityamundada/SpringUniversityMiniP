@@ -42,12 +42,12 @@ public class ApplicantDaoImpl implements IApplicantDao {
 	public String checkuser(LoginBean l) throws UniversityException {
 		// TODO Auto-generated method stub
 		LoginBean login = entityManager.find(LoginBean.class,l.getUserName());
-						
-		
+				
 		if(login==null){
 			
 			throw new UniversityException("THIS USER LOGIN ID DOESN'T EXISTS");}
 		else{
+			System.out.println("xxxxxxxxxxxxxxxxx  " + login.getPassword());
 			if(l.getPassword().equals(login.getPassword())){
 				return login.getRole();}
 				else
