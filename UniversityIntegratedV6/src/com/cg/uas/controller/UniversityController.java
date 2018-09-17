@@ -587,6 +587,15 @@ return model;
 	
 	
 	
+		
+		@RequestMapping(value="/machome.obj")
+		public String getMACHome(){
+			
+			return "MACHome";
+		}
+		
+		
+		
 	// Shows the list of scheduled programs
 	
 	@RequestMapping("/showScheduledPrograms.obj")
@@ -657,7 +666,6 @@ return model;
 	public ModelAndView interviewDate(@RequestParam("appId") Integer appId, @RequestParam("dateOfInterview") Date date) {
 		ModelAndView model = new ModelAndView();
 		try {
-			macservice.accept(appId);
 			macservice.interview(appId, date);
 			model.setViewName("MACHome");
 		} 
