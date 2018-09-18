@@ -38,22 +38,32 @@ body{
 <table>
 <tr><td>
   Enter Full Name:</td><td>
-  <form:input path="fullName"/><form:errors path="fullName" cssClass="error"></form:errors></td></tr>
+  <form:input path="fullName" placeholder = "Enter your Full Name"/>
+  <form:errors path="fullName" cssClass="error"></form:errors></td></tr>
 
-  <tr><td> Enter Date Of Birth ("dd/MM/yyyy"):</td><td>
-  <form:input    path="dateOfBirth"/><br/><form:errors path="dateOfBirth" cssClass="error"></form:errors>
+  <tr><td> Enter Date Of Birth:</td><td>
+  <form:input    path="dateOfBirth" type = "date"/><br/>
+  <form:errors path="dateOfBirth" cssClass="error"></form:errors>
 </td></tr>
+
   <tr><td> Enter your highest qualification:</td><td>
-  <form:input path="highestQualification"/><form:errors path="highestQualification" cssClass="error"></form:errors>
+  <form:input path="highestQualification" placeholder = "Enter your Highest Qualifications"/>
+  <form:errors path="highestQualification" cssClass="error"></form:errors>
 </td></tr>
+
  <tr><td> Enter your marks obtained:</td><td>
-  <form:input path="marksObtained"/>
+  <form:input path="marksObtained" pattern = "^([0]?[1-9])|([0-9][0-9])|([1][0][0])$" title = "Enter a number between 1-100" placeholder = "Enter your marks obtained"/>
+  <form:errors path="marksObtained" cssClass="error"></form:errors>
  <br>
+ 
   <tr><td> Enter your goals:</td><td>
-  <form:input path="goals"/>
+  <form:input path="goals" placeholder = "Enter your goals"/>
+  <form:errors path="goals" cssClass="error"></form:errors>
  </td></tr>
+ 
   <tr><td> Enter your Email Id:</td><td>
-  <form:input path="emailID"/>
+  <form:input path="emailID" placeholder = "Enter your Email Id"/>
+  <form:errors path="emailID" cssClass="error"></form:errors>
  </td></tr>
   
 <tr><td> Select Your Scheduled Id:</td><td>
@@ -62,15 +72,12 @@ body{
 	<form:option value="" label="Please Select"/>
 	<form:options items="${ids}" />
   </form:select></td></tr>
+  <form:errors path="scheduledProgramID" cssClass="error"></form:errors>
  </table>
- 
-
- 
-
   <input type="submit" value="Add"/>
   
 </form:form>
-<center>
+
 <br>
   <br>
   <br>
@@ -78,6 +85,7 @@ body{
   <a href="showApplicant.obj">Go to Applicant Home Page</a>
  <br>
  <br>
+ </center>
     <%@ include file = "Footer.jsp" %>
 </body>
 </html>

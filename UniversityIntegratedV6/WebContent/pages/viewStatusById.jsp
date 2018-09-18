@@ -24,9 +24,6 @@ body{
 <body>
  <%@ include file = "Header.jsp" %>
 
-			<a  href="#"> UNIVERSITY</a>
-	
-				<a href="showApplicant.obj">BACK</a>
 		
 	<div class="container">
 		<center>
@@ -52,16 +49,14 @@ body{
 			</c:if>
 			
 		
-			
-			
-		</center>
-	</div>
-	 <a href="showApplicant.obj">Back to Applicant Page</a>
-  <br>
-  <br>
 <br>
+  <br>
+  <br>
+  <br>
+  <a href="showApplicant.obj">Go to Applicant Home Page</a>
  <br>
  <br>
+ </center>
   <%@ include file = "Footer.jsp" %>
 </body>
 </html>

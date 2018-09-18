@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.jms.Session;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -168,7 +168,7 @@ public class UniversityController {
 		return mnv;
 	}
 	
-	@RequestMapping("/addApplicant.obj")
+	/*@RequestMapping("/addApplicant.obj")
 	public ModelAndView addApplicant(@ModelAttribute("applicant") ApplicationBean applicant,BindingResult result) throws UniversityException{
 		ModelAndView model = new ModelAndView();
 		applicant=service.addApplicant(applicant);
@@ -181,7 +181,7 @@ public class UniversityController {
 		}
 		return model;
 		
-	}
+	}*/
 	@RequestMapping("/showAllScheduledProgram.obj")
 	public ModelAndView showAllScheduledProgram(){
 	ModelAndView model=new ModelAndView();
@@ -213,20 +213,27 @@ return model;
 	/*
 	 * Apply for the program
 	 */
-	@RequestMapping("/showApplyOnline")
+/*	@RequestMapping("/showApplyOnline")
 	public ModelAndView applyprogram(){
 		ModelAndView mnv=new ModelAndView();
 		mnv.addObject("applicant", new ApplicationBean());
 		mnv.setViewName("ApplyOnline");
 		return mnv;
-	}
+	}*/
 	
 	@RequestMapping("/checkRegister")
 	public ModelAndView registerApplicant(@ModelAttribute ("applicant") @Valid ApplicationBean applicant,BindingResult result) throws UniversityException{
 		ModelAndView mnv=new ModelAndView();
 	
 		if(result.hasErrors()){
+			List<ProgramScheduledBean> list;
+			list=service.viewAllScheduledProgram();
+			ArrayList<String> ids=new ArrayList<String>();
+			for (ProgramScheduledBean s:list){
+				ids.add(s.getScheduledProgramID());
 			
+			}
+			mnv.addObject("ids",ids);
 			mnv.addObject("applicant", applicant);
 			mnv.setViewName("ApplyOnline");
 		}
