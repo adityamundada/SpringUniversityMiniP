@@ -46,7 +46,9 @@ body{
 </tr>
 <tr>
 	<td>Enter Duration:(In months)</td>
-  	<td><form:input path="duration" pattern = "^([0]?[1-9])|([1][0-9])|([2][0-4])$" title = "Enter a number between 1-24" />
+  	<td><form:input path="duration" pattern = "^(0?[1-9])|([1][0-9])|([2][0-4])$"  title = "Enter a number between 1-24" />
+  	 
+  	  
     	<form:errors path="duration" style="color:red" />
 	</td>
 </tr>

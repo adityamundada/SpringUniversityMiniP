@@ -32,7 +32,7 @@ body{
 					<th>Program Name</th>
 					<th>Description</th>
 					<th>Application Eligibility</th>
-					<th>Duration of course(Years)</th>
+					<th>Duration of course(Months)</th>
 					<th>Degree certificate offered</th>
 				</tr>
 				<c:forEach items="${list}" var="program">

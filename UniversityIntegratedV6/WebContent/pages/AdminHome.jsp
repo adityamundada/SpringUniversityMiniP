@@ -93,7 +93,7 @@ li.dropdown {
         <ul>
          <li><a href="index.obj">Home</a></li>
             <li><a href="default.asp">Logout</a></li>
-            <!-- <li><a href="news.asp">view Program</a></li> -->
+            
             <li><a href="viewApplicantsByScheduleId.obj">View Applicants</a></li>
             <li class="dropdown">
               <a href="javascript:void(0)" class="dropbtn">Programs Scheduled</a>

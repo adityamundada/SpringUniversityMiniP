@@ -42,7 +42,7 @@ body{
 				</c:forEach>
 			</tbody>
 		</table> 
-		<a href="AdminHome.jsp">Homepage</a>
+		<a href="adminHome.obj">Go to Admin Homepage</a>
 
 
 

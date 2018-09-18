@@ -2,6 +2,7 @@ package com.cg.uas.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -277,6 +278,7 @@ return model;
 		if(result.hasErrors()){
 			
 			modelAndView.addObject("programOfferedBean", programOfferedBean);
+//			System.out.println("xxxxxxxxxxxxxxxxxxxxxxx" + programOfferedBean.getDuration());
 			modelAndView.setViewName("addProgramsOffered");
 		}else{
 			ProgramOfferedBean offeredBean = adminService.findoffered(programOfferedBean.getProgramName());
@@ -545,6 +547,7 @@ return model;
 		@RequestMapping(value = "/prepareViewByDateProgramSchedule.obj")
 		public String prepareViewByDateProgramSchedule(Model model){
 			model.addAttribute("programScheduledBean", new ProgramScheduledBean());
+			
 			return "ViewByDateProgramSchedule";
 		}
 		
@@ -553,21 +556,26 @@ return model;
 		public ModelAndView viewByDateSchedule(@ModelAttribute("programScheduledBean")@Valid ProgramScheduledBean programScheduledBean,BindingResult result ) throws UniversityException{
 			ModelAndView mnv = new ModelAndView();
 			
-			if(result.hasErrors()){
+			if(result.getFieldError("startDate") != null || result.getFieldError("endDate") != null ){
 				mnv.addObject("programScheduledBean", programScheduledBean);
 				mnv.setViewName("ViewByDateProgramSchedule");
+				
 
 			}else{
 				Date startDate =   programScheduledBean.getStartDate();
 				Date endDate = programScheduledBean.getEndDate();
 				List<ProgramScheduledBean> beans  = adminService.viewSchedule(startDate,endDate);
-//				for (Iterator iterator = beans.iterator(); iterator.hasNext();) {
-//					ProgramScheduledBean programScheduledBean2 = (ProgramScheduledBean) iterator.next();
-//					System.out.println(programScheduledBean2.getProgramName());
-//				}
-				mnv.addObject("programViewByDate", beans);
-				mnv.addObject("programScheduledBean", new ProgramScheduledBean());
-				mnv.setViewName("ViewByDateProgramSchedule");
+				System.out.println("---------------------- "+ beans.size());
+
+				if( beans.size()>1){
+					mnv.addObject("programViewByDate", beans);
+					mnv.addObject("programScheduledBean", new ProgramScheduledBean());
+					mnv.setViewName("ViewByDateProgramSchedule");
+				}else{
+					mnv.addObject("message", "No program is scheduled between given dates");
+					mnv.addObject("programScheduledBean", new ProgramScheduledBean());
+					mnv.setViewName("ViewByDateProgramSchedule");
+				}
 			}
 			return mnv;
 		}

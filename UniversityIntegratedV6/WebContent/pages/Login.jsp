@@ -51,9 +51,9 @@ a:link, a:visited {
 <tr><td>  Enter Password:</td><td> <form:password path="password"/><br/></td></tr>
 </table>
   <input type="submit" value="Login"/>
- </center>
    
 </form:form>
+ </center>
 <br>
  <br>
  <br>

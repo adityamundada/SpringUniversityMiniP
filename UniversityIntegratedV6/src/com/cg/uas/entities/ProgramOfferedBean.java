@@ -33,7 +33,6 @@ public class ProgramOfferedBean {
 	private String applicantEligibility;
 	
 	@Column(name="DURATION")
-	@NumberFormat(pattern = "[1-9]")
 	@NotNull(message = "Field cannot be empty!!")
 	@Range(min = 1, max = 24, message = "Duration should be 1-24 months")
 	private Integer duration;

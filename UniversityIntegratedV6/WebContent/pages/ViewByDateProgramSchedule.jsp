@@ -23,15 +23,18 @@ body{
 
 <form:form method="post" modelAttribute="programScheduledBean" action="${myAction}">
 
-  Enter Schedule Start Date:<form:input path="startDate" placeholder = "dd/mm/yyyy"/>
+  Enter Schedule Start Date:<form:input type = "date" path="startDate" placeholder = "dd/mm/yyyy"/>
   <form:errors path="startDate" style="color:red"></form:errors><br/>
   
-  Enter Schedule Start Date:<form:input path="endDate" placeholder = "dd/mm/yyyy"/>
+  Enter Schedule Start Date:<form:input type = "date"  path="endDate" placeholder = "dd/mm/yyyy"/>
   <form:errors path="endDate" style="color:red"></form:errors><br/><br/>
   
   <input type="submit" value="View Schedule"/> <br>
 </form:form>
+<c:if test="${message ne  null}">
+	<h4 style="color :red">${message}</h4>
 
+</c:if>
 <c:if test="${programViewByDate ne null}">
 	<div>
 		<table border="2px">
@@ -39,8 +42,8 @@ body{
 				<th>Program Schedule Id</th>
 				<th>Program Name</th>
 				<th>Location</th>
-				<th>Start Date</th>
-				<th>end Date</th>
+				<th>Start Date (yyyy-MM-dd)</th>
+				<th>end Date (yyyy-MM-dd)</th>
 				<th>Sessions Per Week</th>
 			</tr>
 			<c:forEach items="${programViewByDate}" var="program">
