@@ -29,6 +29,7 @@ public class AdminDAOImpl implements IAdminDAO{
 	@Override
 	public ProgramOfferedBean addProgramOffered(ProgramOfferedBean programOfferedBean) throws UniversityException {
 	
+		
 		entityManager.persist(programOfferedBean);
 		entityManager.flush();
 		

@@ -86,6 +86,7 @@ li.dropdown {
 <h1>University Admission Portal </h1>
 </div>
 <br>
+
 <div>
   <nav>
     

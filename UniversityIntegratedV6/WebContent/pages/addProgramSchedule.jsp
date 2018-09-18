@@ -23,26 +23,48 @@ body{
 <c:url var = "myAction" value="addProgramSchedule.obj"></c:url>
 
 <form:form method="post" modelAttribute="programScheduledBean" action="${myAction}">
-
-  Enter Program Schedule ID:<form:input path="scheduledProgramID"/>
-  <form:errors path="scheduledProgramID" style="color:red"> </form:errors><br/>
-  
-  Enter Program Name:<form:input path="programName" value="${programName}" readonly="true"/>
-  <form:errors path="programName" style="color:red"> </form:errors><br/>
-  
-  Enter Location:<form:input path="location"/>
-  <form:errors path="location" style="color:red"> </form:errors><br/>
-  
-  Enter Start date:<form:input path="startDate" placeholder = "dd/mm/yyyy"/>
-  <form:errors path="startDate" style="color:red" ></form:errors><br/>
-  
-  Enter End Date:<form:input path="endDate" placeholder = "dd/mm/yyyy"/>
-  <form:errors path="endDate" style="color:red"></form:errors> <br/>
-  
-  Enter Sessions Per Week:<form:input path="sessionsPerWeek" placeholder = "i.e 1  2  3"/>
-  <form:errors path="sessionsPerWeek" style="color:red"></form:errors><br/>
-  
-  <input type="submit" value="Add"/>
+<table>
+	<tr>
+  		<td>Enter Program Schedule ID </td>
+  		<td><form:input path="scheduledProgramID"/>
+  			<form:errors path="scheduledProgramID" style="color:red"> </form:errors>
+  		</td>
+  	</tr>
+  	
+  	<tr>
+  		<td>  Enter Program Name </td>
+  		<td><form:input path="programName" value="${programName}" readonly="true"/>
+  			<form:errors path="programName" style="color:red"> </form:errors>
+  		</td>
+  	</tr>
+	<tr>
+  		<td>Enter Location </td>
+  		<td><form:input path="location"/>
+  			<form:errors path="location" style="color:red"> </form:errors>
+  		</td>
+  	</tr>
+	<tr>
+  		<td>Enter Start date </td>
+  		<td><form:input path="startDate" placeholder = "dd/mm/yyyy" pattern = "^[0-3]?[0-9]/[0-3]?[0-9]/(?:[0-9]{2})?[0-9]{2}$" title = "Enter valid date format"/>
+  			<form:errors path="startDate" style="color:red" ></form:errors>
+  		</td>
+  	</tr>
+  	<tr>
+  		<td> Enter End Date </td>
+  		<td><form:input path="endDate" placeholder = "dd/mm/yyyy" pattern = "^[0-3]?[0-9]/[0-3]?[0-9]/(?:[0-9]{2})?[0-9]{2}$" title = "Enter valid date format"/>
+  			 <form:errors path="endDate" style="color:red"></form:errors>
+  		</td>
+  	</tr>
+  	<tr>
+  		<td>Enter Sessions Per Week </td>
+  		<td><form:input path="sessionsPerWeek" placeholder = "i.e 1  2  3" pattern = "[1-6]" title ="Enter a valid session number (1-6)" />
+  			<form:errors path="sessionsPerWeek" style="color:red"></form:errors>
+  		</td>
+  	</tr>
+  	<tr>
+  		<td><input type="submit" value="Add"/></td>
+  	</tr>
+  </table>
 </form:form>
 
 <c:if test="${programAdded ne null}" >

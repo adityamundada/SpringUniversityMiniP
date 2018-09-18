@@ -38,9 +38,9 @@ body{
 				</c:forEach>
 			</tbody>
 		</table> 
-		<a href="pages/MACHome.jsp">Homepage</a>
 		 <br>
   <br>
+  <a href="machome.obj">MAC Homepage</a>
 <br>
  <br>
  <br>

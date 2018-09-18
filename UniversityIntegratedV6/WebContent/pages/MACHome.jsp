@@ -19,10 +19,10 @@ img {
 <body>
  <%@ include file = "Header.jsp" %>
 
-		<a href="/UniversityProjectApplicant/showScheduledPrograms.obj">SHOW SCHEDULED PROGRAMS</a>     	
-		<a href="/UniversityProjectApplicant/viewAllApplicants.obj">UPDATE STATUS</a>
-		<a href="/UniversityProjectApplicant/viewAllConfirmedApplicants.obj">VIEW ALL CONFIRMED APPLICANTS</a>
-		<a href="/UniversityProjectApplicant/logout.obj">LOGOUT</a>
+		<a href="showScheduledPrograms.obj">SHOW SCHEDULED PROGRAMS</a>     	
+		<a href="viewAllApplicants.obj">UPDATE STATUS OF APPLICANT AFTER INTERVIEW</a>
+		<a href="viewAllConfirmedApplicants.obj">VIEW ALL CONFIRMED APPLICANTS</a>
+		<a href="logout.obj">LOGOUT</a>
 		 <br>
   <br>
 <br>
@@ -42,6 +42,6 @@ img {
 <br>
  <br>
  <br>
-  <%@ include file = "Footer.jsp" %>
+  <a href="machome.obj">MAC Homepage</a>
 	</body>
 </html>

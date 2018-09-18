@@ -52,7 +52,7 @@ body{
 				</c:forEach>
 			</tbody>
 		</table>
-		<a href="pages/MACHome.jsp">Homepage</a>
+		 <a href="machome.obj">MAC Homepage</a>
 		<br>
  <br>
  <br>
