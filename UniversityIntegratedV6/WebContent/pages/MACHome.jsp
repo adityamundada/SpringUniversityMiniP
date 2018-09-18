@@ -10,6 +10,9 @@ body{
 	background-color: #323030;
 	color:white;
 }
+img {
+    float: right;
+}
 
 </style>
 </head>
@@ -25,6 +28,20 @@ body{
 		<a href="logout.obj">LOGOUT</a>
 		<br>
   <br>
+<br>
+<h3>MAC</h3><br>
+ <img src="images/mac.jpg"  style="width:170px;height:170px;margin-left:15px;">
+ <ul type="square">
+ <li>Login into the system using his/her credentials.<br></li>
+ <li>
+ View applications for a specific program.<br></li>
+ <li>Accept/Reject an application on the basis of details of the applicant. If
+ accepted, fill in the scheduled date for an interview of the applicant before confirming the
+ applicant to take the program.<br></li>
+ 
+<li>After the interview, update the status of the application to Confirmed/Rejected.</li>
+</ul>
+ 
 <br>
  <br>
  <br>

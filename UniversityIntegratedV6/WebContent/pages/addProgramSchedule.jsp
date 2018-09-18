@@ -70,7 +70,10 @@ body{
 <c:if test="${programAdded ne null}" >
 	<h2>Program schedule added successfully.</h2> <br>
 </c:if>
-<a href="adminHome.obj">Go to home page</a>
+<br>
+<br>
+<br>
+<a href="adminHome.obj">Go to Admin Home Pagee</a>
 
 </body>
 </html>

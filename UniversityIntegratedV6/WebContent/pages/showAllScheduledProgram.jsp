@@ -11,9 +11,7 @@
 body{
 	background-color: #323030;
 	color: white;
-	
-	
-	
+		
 }
 
 
