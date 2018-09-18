@@ -1,5 +1,6 @@
 package com.cg.uas.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class MACServiceImpl implements IMACService {
 	}
 	
 	@Override
-	public ApplicationBean interview(Integer applicationId, String date) throws UniversityException {
+	public ApplicationBean interview(Integer applicationId, Date date) throws UniversityException {
 		return MACdao.interview(applicationId, date);
 	}
 	

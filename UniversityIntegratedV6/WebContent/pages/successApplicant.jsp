@@ -7,26 +7,33 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Success</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 
 
 <style>
 body{
 	background-color: #323030;
 	color:white;
 }
-
+.linkalign{
+float: right;}
 </style>
 </head>
 <body>
+ 
  <%@ include file = "Header.jsp" %>
+ <br>
+ <br>
+ <br>
+  <a class="linkalign" href="showApplyOnline.obj">Back</a>
+  <br>
+  <br>
+  <br>
 
 <h2>Congratulations. You are Successfully Registered!!!!</h2>
   <h2>Your Details</h2>  
                                                                        
          
-  <table class="table">
+  <table border=1>
     <thead>
       <tr>
       		<th bgcolor="#c2c2d6">Application Id</th>
@@ -47,6 +54,15 @@ body{
       </table>
    <br>
   <br>
+  <center>
+  <br>
+  <br>
+  <br>
+  <br>
+  <a href="showApplicant.obj">Go to Applicant Home Page</a>
+ <br>
+ <br>
+ </center>
 <br>
  <br>
  <br>

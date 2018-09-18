@@ -1,8 +1,6 @@
 package com.cg.uas.entities;
 
-
-
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,9 +15,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.Email;
+
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
 
 @Entity
 @Table(name="Application")
@@ -33,26 +33,31 @@ public class ApplicationBean {
 	
 	
 	@Column(name="full_name")
-	@Pattern(regexp="[A-Za-z_ ]+", message="Please enter a valid Program Name")
+	@Pattern(regexp="[A-Za-z\\s]{1,20}", message="Please enter your valid Full Name in alphabets maximum 20 characters")
 	@NotEmpty(message = "Please enter your full name.")
-	@Size(min=1,max=30)
 	private String fullName;
 	
 	
-	@Temporal(TemporalType.DATE)
+	//@Temporal(TemporalType.DATE)
 	@Column(name="date_of_birth")
-	@DateTimeFormat(pattern="dd/MM/yyyy")
+	//@DateTimeFormat(pattern="dd/MM/yyyy")
+	@NotNull(message = "Field cannot be empty")
 	private Date dateOfBirth;
 	
 	
 	@Column(name="highest_qualification")
 	@NotEmpty(message = "Please enter your highest qualification.")
 	@Pattern(regexp="^[0-9a-zA-Z_ /.]*$", message="Please enter a valid Qualification")
+	@Size(min=1,max=10)
 	private String highestQualification;
 	
 	
-	@NotNull
+
 	@Column(name="marks_obtained")
+	@NumberFormat(pattern = "[1-9]")
+	//@Pattern(regexp="[0-9]{1,3}", message="Marks should be numerical")
+	@NotNull(message = "Field cannot be empty!!")
+	@Range(min = 1, max = 100, message = "Marks should be in range 1-100")
 	private Integer marksObtained;
 	
 	
@@ -60,16 +65,19 @@ public class ApplicationBean {
 	@Column(name="goals")
 	@NotEmpty(message = "Please enter your goals.")
 	@Pattern(regexp="^[0-9a-zA-Z_ /.]*$", message="Please enter a valid Goals")
+	@Size(min=1,max=20)
 	private String goals;
 	
 	
-	@Email
-	//@Pattern(regexp="\\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b", message="Please enter a valid emailId")
+/*	@Email*/
+	@Pattern(regexp="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$" , message="Please enter a valid emailId")
 	@NotEmpty(message = "Please enter your email addresss.")
 	@Column(name="email_id")
+	@Size(min=1,max=20)
 	private String emailID;
 	
 	@Column(name="Scheduled_program_id")
+	@NotEmpty(message = "Please select an Scheduled Program Id.")
 	private String scheduledProgramID;
 	
 	@Column(name="status")
@@ -77,9 +85,9 @@ public class ApplicationBean {
 	
 	
 	
-	@Temporal(TemporalType.DATE)
+	//@Temporal(TemporalType.DATE)
 	@Column(name="Date_Of_Interview")
-	@DateTimeFormat(pattern="dd/MM/yyyy")
+	//@DateTimeFormat(pattern="dd/MM/yyyy")
 	private Date dateOfInterview;
 	
 	public int getApplicationId() {

@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.jms.Session;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -169,7 +168,7 @@ public class UniversityController {
 		return mnv;
 	}
 	
-	@RequestMapping("/addApplicant.obj")
+	/*@RequestMapping("/addApplicant.obj")
 	public ModelAndView addApplicant(@ModelAttribute("applicant") ApplicationBean applicant,BindingResult result) throws UniversityException{
 		ModelAndView model = new ModelAndView();
 		applicant=service.addApplicant(applicant);
@@ -182,7 +181,7 @@ public class UniversityController {
 		}
 		return model;
 		
-	}
+	}*/
 	@RequestMapping("/showAllScheduledProgram.obj")
 	public ModelAndView showAllScheduledProgram(){
 	ModelAndView model=new ModelAndView();
@@ -214,20 +213,27 @@ return model;
 	/*
 	 * Apply for the program
 	 */
-	@RequestMapping("/showApplyOnline")
+/*	@RequestMapping("/showApplyOnline")
 	public ModelAndView applyprogram(){
 		ModelAndView mnv=new ModelAndView();
 		mnv.addObject("applicant", new ApplicationBean());
 		mnv.setViewName("ApplyOnline");
 		return mnv;
-	}
+	}*/
 	
 	@RequestMapping("/checkRegister")
 	public ModelAndView registerApplicant(@ModelAttribute ("applicant") @Valid ApplicationBean applicant,BindingResult result) throws UniversityException{
 		ModelAndView mnv=new ModelAndView();
 	
 		if(result.hasErrors()){
+			List<ProgramScheduledBean> list;
+			list=service.viewAllScheduledProgram();
+			ArrayList<String> ids=new ArrayList<String>();
+			for (ProgramScheduledBean s:list){
+				ids.add(s.getScheduledProgramID());
 			
+			}
+			mnv.addObject("ids",ids);
 			mnv.addObject("applicant", applicant);
 			mnv.setViewName("ApplyOnline");
 		}
@@ -664,11 +670,14 @@ return model;
 
 	@RequestMapping("/accept.obj")
 	public ModelAndView showInterviewForm(@RequestParam("appId") Integer appId) {
-		ModelAndView model = new ModelAndView();	
+		ModelAndView model = new ModelAndView();
+		ApplicationBean applicationBean = new ApplicationBean();
+		applicationBean.setApplicationId(appId);
 		try {
 			macservice.accept(appId);
 			model.setViewName("interviewDate");
-			model.addObject("applicant", appId);
+			//model.addObject("applicant", appId);
+			model.addObject("applicationBean", applicationBean);
 		} 
 		catch (UniversityException e) {
 			model.setViewName("error");
@@ -681,11 +690,13 @@ return model;
 	// Shows the date of interview for applicant
 	
 	@RequestMapping("/interview.obj")
-	public ModelAndView interviewDate(@RequestParam("appId") Integer appId, @RequestParam("dateOfInterview") String date) {
+	//public ModelAndView interviewDate(@RequestParam("appId") Integer appId, @RequestParam("dateOfInterview") String date) {
+	public ModelAndView interviewDate(@ModelAttribute("applicationBean") ApplicationBean applicationBean, BindingResult result ) {
 		ModelAndView model = new ModelAndView();
 		try {
-			System.out.println("in /interview.obj ---->" + date);
-			macservice.interview(appId, date);
+			System.out.println("xxxxxxxxx in /interview.obj ---->" + applicationBean.getDateOfInterview());
+			System.out.println("yyyyyyyyyy in /interview.obj --->" + applicationBean.getApplicationId());
+			macservice.interview(applicationBean.getApplicationId(), applicationBean.getDateOfInterview());
 			model.setViewName("MACHome");
 		} 
 		catch (UniversityException e) {
@@ -695,6 +706,8 @@ return model;
 		return model;
 	}
 	
+		
+
 	
 	// Rejects the applicant
 
