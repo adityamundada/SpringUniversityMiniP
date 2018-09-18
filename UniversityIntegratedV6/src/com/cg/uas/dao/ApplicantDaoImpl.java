@@ -22,10 +22,8 @@ public class ApplicantDaoImpl implements IApplicantDao {
 	
 
 	@Override
-	public ApplicationBean addApplicant(ApplicationBean applicant)
-			throws UniversityException {
-		// TODO Auto-generated method stub
-		applicant.setStatus("Applied");
+	public ApplicationBean addApplicant(ApplicationBean applicant) throws UniversityException {
+		applicant.setStatus("APPLIED");
 		entityManager.persist(applicant);
 		entityManager.flush();
 		return applicant;

@@ -1,8 +1,7 @@
 package com.cg.uas.entities;
 
 
-
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,9 +38,9 @@ public class ApplicationBean {
 	private String fullName;
 	
 	
-	@Temporal(TemporalType.DATE)
+	//@Temporal(TemporalType.DATE)
 	@Column(name="date_of_birth")
-	@DateTimeFormat(pattern="dd/MM/yyyy")
+	//@DateTimeFormat(pattern="dd/MM/yyyy")
 	private Date dateOfBirth;
 	
 	
@@ -77,9 +76,9 @@ public class ApplicationBean {
 	
 	
 	
-	@Temporal(TemporalType.DATE)
+	//@Temporal(TemporalType.DATE)
 	@Column(name="Date_Of_Interview")
-	@DateTimeFormat(pattern="dd/MM/yyyy")
+	//@DateTimeFormat(pattern="dd/MM/yyyy")
 	private Date dateOfInterview;
 	
 	public int getApplicationId() {

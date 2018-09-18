@@ -16,11 +16,14 @@ body{
 <body>
  <%@ include file = "Header.jsp" %>
 
-		<a href="showScheduledPrograms.obj">SHOW SCHEDULED PROGRAMS</a>     	
+		<a href="showScheduledPrograms.obj">SHOW SCHEDULED PROGRAMS</a> 
+		<br>    	
 		<a href="viewAllApplicants.obj">UPDATE STATUS OF APPLICANT AFTER INTERVIEW</a>
+		<br>  
 		<a href="viewAllConfirmedApplicants.obj">VIEW ALL CONFIRMED APPLICANTS</a>
+		<br>  
 		<a href="logout.obj">LOGOUT</a>
-		 <br>
+		<br>
   <br>
 <br>
  <br>

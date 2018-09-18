@@ -23,7 +23,7 @@ public interface IMACDao {
 	public List<ApplicationBean> confirmedApplicants(String scheduledProgramId) throws UniversityException;
 	
 	/* Sets applicant's date of interview, given his/her application ID */
-	public ApplicationBean interview(Integer applicationId, String date) throws UniversityException;
+	public ApplicationBean interview(Integer applicationId, Date date) throws UniversityException;
 
 	/* Updates applicant's status as CONFIRMED (yay!), given his/her application ID */
 	public ApplicationBean confirm(Integer applicationId) throws UniversityException;

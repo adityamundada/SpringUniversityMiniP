@@ -131,9 +131,7 @@ public class AdminDAOImpl implements IAdminDAO{
 
 
 	@Override
-	public ProgramScheduledBean addSchedule(
-			ProgramScheduledBean programScheduledBean)
-			throws UniversityException {
+	public ProgramScheduledBean addSchedule(ProgramScheduledBean programScheduledBean)throws UniversityException {
 		entityManager.persist(programScheduledBean);
 		entityManager.flush();
 		return programScheduledBean;
