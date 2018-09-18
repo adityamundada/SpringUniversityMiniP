@@ -45,13 +45,13 @@ body{
   	</tr>
 	<tr>
   		<td>Enter Start date </td>
-  		<td><form:input path="startDate" placeholder = "dd/mm/yyyy" pattern = "^[0-3]?[0-9]/[0-3]?[0-9]/(?:[0-9]{2})?[0-9]{2}$" title = "Enter valid date format"/>
+  		<td><form:input path="startDate" type = "date" />
   			<form:errors path="startDate" style="color:red" ></form:errors>
   		</td>
   	</tr>
   	<tr>
   		<td> Enter End Date </td>
-  		<td><form:input path="endDate" placeholder = "dd/mm/yyyy" pattern = "^[0-3]?[0-9]/[0-3]?[0-9]/(?:[0-9]{2})?[0-9]{2}$" title = "Enter valid date format"/>
+  		<td><form:input path="endDate" type = "date" />
   			 <form:errors path="endDate" style="color:red"></form:errors>
   		</td>
   	</tr>

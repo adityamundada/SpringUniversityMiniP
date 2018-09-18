@@ -18,7 +18,6 @@ body{
 </head>
 <body>
  <%@ include file = "Header.jsp" %>
-Under development!!!
 <h2>Applicant Details</h2> 
 		<table class="table">
     		<thead>
@@ -52,7 +51,7 @@ Under development!!!
 			</tbody>
 </table>
 
-
+<a href="adminHome.obj">Go to Admin Homepage</a>
 
 
 

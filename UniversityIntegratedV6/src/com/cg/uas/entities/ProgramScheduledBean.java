@@ -4,19 +4,16 @@ import java.io.Serializable;
 
 
 
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
@@ -26,9 +23,9 @@ public class ProgramScheduledBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@NotEmpty(message="Field cannot be empty")
 	@Pattern(regexp="[A-Za-z0-9]{1,5}",message="Please enter a valid id")
 	@Column(name = "Scheduled_program_id")
+	@NotEmpty(message="Field cannot be empty")
 	private String scheduledProgramID;
 	
 	@NotEmpty(message="Field cannot be empty")
@@ -40,15 +37,9 @@ public class ProgramScheduledBean implements Serializable {
 	private String location;
 	
 	@Column(name = "start_date")
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@Temporal(TemporalType.DATE)
-	@NotNull(message = "Field cannot be empty")
 	private Date startDate;
 	
 	@Column(name = "end_date")
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@Temporal(TemporalType.DATE)
-	@NotNull(message = "Field cannot be empty")
 	private Date endDate;
 
 	@NotNull(message="Field cannot be empty")
