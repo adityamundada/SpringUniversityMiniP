@@ -123,7 +123,7 @@ li.dropdown {
 <br>
 <br>
 <br>
-<a href="index.obj">Go to University HomePage</a>
+<a href="adminHome.obj">Go to Admin Home Page</a>
 
 
 </body>

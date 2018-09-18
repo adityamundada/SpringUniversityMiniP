@@ -75,6 +75,7 @@ body{
   <br>
   <br>
   <br>
+  <a href="showApplicant.obj">Go to Applicant Home Page</a>
  <br>
  <br>
     <%@ include file = "Footer.jsp" %>

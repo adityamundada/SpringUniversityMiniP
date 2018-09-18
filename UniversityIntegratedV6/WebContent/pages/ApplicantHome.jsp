@@ -17,9 +17,9 @@ body{
  <br>
 <br>
 <br>
-<a href="showAllScheduledProgram.obj">Show All Scheduled Program</a><br/>
- <a href="showApplyOnline.obj">Apply Online</a><br/>
-  <a href="showCheckStatus.obj">Check Application Status</a><br/>
+<a href="showAllScheduledProgram.obj">Show All Scheduled Program</a>
+ <a href="showApplyOnline.obj">Apply Online</a>
+  <a href="showCheckStatus.obj">Check Application Status</a>
   
 
 <br>
